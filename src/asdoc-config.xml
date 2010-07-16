@@ -1,0 +1,34 @@
+<flex-config>
+	<compiler>
+		<debug>false</debug>
+		<external-library-path>
+			<path-element>../libs</path-element>
+		</external-library-path>
+		<source-path>
+			<path-element>.</path-element>
+		</source-path>
+	</compiler>
+	<doc-classes>
+		<class>net.wonderfl.score.basic.BasicScoreForm</class>
+		<class>net.wonderfl.score.basic.BasicScoreRecordViewer</class>
+	</doc-classes>
+	<packages>
+		<package>
+			<string>net.wonderfl.score.basic</string>
+			<string>This package gives simple ui of the form and the score record viewer which is based on MinimalComps v.0.9.5</string>
+		</package>
+		<package>
+			<string>net.wonderfl.score.form</string>
+			<string>Class for score sending form.</string>
+		</package>
+		<package>
+			<string>net.wonderfl.score.manager</string>
+			<string>Classes for API communication process.</string>
+		</package>
+		<package>
+			<string>net.wonderfl.score.viewer</string>
+			<string>Classes for score record viewer.</string>
+		</package>
+	</packages>
+	<output>../asdoc</output>
+</flex-config>

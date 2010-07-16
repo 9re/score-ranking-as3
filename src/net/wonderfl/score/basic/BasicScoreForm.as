@@ -11,7 +11,6 @@
 	import flash.text.TextField;
 	import flash.text.TextFieldType;
 	import flash.text.TextFormat;
-	import net.wonderfl.score.basic.CloseButton;
 	import net.wonderfl.score.basic.Window;
 	import net.wonderfl.score.form.ScoreForm;
 	

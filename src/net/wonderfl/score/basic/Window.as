@@ -15,18 +15,13 @@
 	/**
 	 * The Window UI with a close button.<br/>
 	 * This component is based on com.bit101.components.Window of
-	 * MinimalComps v.0.9.2
+	 * MinimalComps v.0.9.5
 	 * 
 	 * @author kobayashi-taro
 	 * @see http://code.google.com/p/minimalcomps/
 	 */
 	public class Window extends com.bit101.components.Window
 	{
-		/**
-		 * The referenece to the close button.
-		 */
-		protected var _closeButton:CloseButton;
-		
 		/**
 		 * The method called when the user closes the window. You can get/set this method
 		 * by getter/setter method 'onCloseClick'
@@ -44,6 +39,7 @@
 		{
 			_m_onCloseClick = $onCloseClick || _onCloseClick;
 			super($parent, $xpos, $ypos, $title);
+			hasCloseButton = true;
 		}
 		
 		/**
@@ -52,7 +48,6 @@
 		override protected function addChildren():void
 		{
 			super.addChildren();
-			_closeButton = new CloseButton(this, _width - 15, 6, __onCloseClick);
 		}
 		
 		/**
@@ -64,7 +59,7 @@
 			_closeButton.x = _width - 15;
 		}
 
-		private function __onCloseClick(e:MouseEvent):void {
+		override protected function onClose(e:MouseEvent):void {
 			if (_m_onCloseClick != null) {
 				_m_onCloseClick();
 			}
