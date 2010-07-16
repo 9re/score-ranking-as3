@@ -30,7 +30,7 @@
 		 */
 		public static const HEIGHT:int = 240;
 		/**
-		 * The window UI
+		 * The window UI. This window is designed for MinimalComps v.0.9.5
 		 */
 		protected var _window:Window;
 		
