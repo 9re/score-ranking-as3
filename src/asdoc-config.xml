@@ -12,6 +12,9 @@
 		<class>net.wonderfl.score.basic.BasicScoreForm</class>
 		<class>net.wonderfl.score.basic.BasicScoreRecordViewer</class>
 	</doc-classes>
+	<keep-xml>true</keep-xml>
+	<main-title>Wonderfl Score Ranking API v 1.0.2</main-title>
+	<window-title>Wonderfl Score Ranking API v 1.0.2</window-title>
 	<packages>
 		<package>
 			<string>net.wonderfl.score.basic</string>
