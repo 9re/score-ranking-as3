@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<project name="generate asdoc and make fat swc" default="main" basedir=".">
+	<property name="FLEX_HOME" value="C:/flex/flex_sdk_4.1"/> 
+	<property name="ASDOC_OUTPUT" value="../asdoc"/> 
+	<property name="SWC_OUTPUT" value="score-ranking-as3.swc"/> 
+	
+	<taskdef name="mxmlc" classname="flex.ant.MxmlcTask" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/> 
+	<taskdef name="compc" classname="flex.ant.CompcTask" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/> 
+	<taskdef name="asdoc" classname="flex.ant.AsDocTask" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/> 
+		
+	<target name="main" depends="compile, doc" description="generate asdoc and make fat swc"></target> 
+ 
+	<target name="compile" depends="" description="Compile SWC"> 
+		<echo message="Compiling ${SWC_OUTPUT}"/> 
+		<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/> 
+		
+		<compc fork="true" output="${SWC_OUTPUT}"> 
+			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+			<load-config filename="swc-config.xml"/>
+		</compc> 
+		
+	</target> 
+ 
+	<target name="doc" depends="compile" description="Updates SWC with ASDoc XML"> 
+		<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/> 
+		<echo message="Compiling ASDoc for ${SWC_OUTPUT}"/> 
+		
+		<asdoc output="${ASDOC_OUTPUT}" lenient="true" failonerror="true" keep-xml="true" skip-xsl="false" fork="true"> 
+			<load-config filename="${FLEX_HOME}/frameworks/flex-config.xml"/>
+			<load-config filename="asdoc-config.xml"/>
+		</asdoc>
+		
+		<!-- updates *.swc with asdoc xml --> 
+		<zip destfile="${SWC_OUTPUT}" update="true"> 
+		    <zipfileset dir="../asdoc/tempdita" prefix="docs"> 
+			    <include name="*.*"/> 
+				<exclude name="ASDoc_Config.xml"/> 
+				<exclude name="overviews.xml"/> 
+		    </zipfileset> 
+		</zip> 
+	</target> 
+ </project>
