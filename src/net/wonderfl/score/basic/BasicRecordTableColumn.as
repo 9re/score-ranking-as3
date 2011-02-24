@@ -31,9 +31,9 @@
 		 * @param ypos The y position to place this component.
 		 * @param label The text to show in this item.
 		 */
-		public function BasicRecordTableColumn($parent:DisplayObjectContainer, $xpos:Number, $ypos:Number, $data:Object) 
+		public function BasicRecordTableColumn($parent:DisplayObjectContainer, $xpos:Number, $ypos:Number) 
 		{
-			super($parent, $xpos, $ypos, $data);
+			super($parent, $xpos, $ypos);
 		}
 		
 		/**
@@ -57,11 +57,10 @@
 			
 			_height = 19;
 			_width = 200;
-			addToDisplayList(_tfRow0 = getTextField(), { x:2, y:1, width:20, height:_height, text:_data.rank } );
-			addToDisplayList(_tfRow1 = getTextField(), { x:18, y:1, width:100, height:_height, text:_data.name } );
-			addToDisplayList(_tfRow2 = getTextField(), { x:162, y:1, width:40, height:_height, text:_data.score } );
+			addToDisplayList(_tfRow0 = getTextField(), { x:2, y:1, width:20, height:_height} );
+			addToDisplayList(_tfRow1 = getTextField(), { x:18, y:1, width:100, height:_height } );
+			addToDisplayList(_tfRow2 = getTextField(), { x:162, y:1, width:40, height:_height } );
 			
-			_tfRow2.width = _tfRow2.textWidth + 4;
 		}
 		
 		private function addToDisplayList($displayObject:*, $initObject:Object = null):void
@@ -87,7 +86,13 @@
 			_tfRow1.height = _height;
 			_tfRow2.height = _height;
 			
-			_tfRow2.x = _width - _tfRow2.width - 12;
+			if (_data) {
+				_tfRow0.text = _data.rank;
+				_tfRow1.text = _data.name;
+				_tfRow2.text = _data.score;
+				_tfRow2.width = _tfRow2.textWidth + 4;
+				_tfRow2.x = _width - _tfRow2.width - 12;
+			}
 			
 			super.draw();
 		}
